@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sbs.SpringbootStudy.domain.BoardDTO;
@@ -34,6 +35,12 @@ public class BoardController {
 	public String write(BoardDTO boardDTO, RedirectAttributes rttr) throws Exception {
 		boardservice.write(boardDTO);
 		return "redirect:/list";
+	}
+	
+	// 게시글 상세 조회 (RequestParam을 이용해 게시글 번호 가져옴)
+	@RequestMapping(value = "/read", method = RequestMethod.GET)
+	public void read(@RequestParam("board_num") int board_num, Model model) throws Exception {
+		model.addAttribute(boardservice.read(board_num));
 	}
 
 }

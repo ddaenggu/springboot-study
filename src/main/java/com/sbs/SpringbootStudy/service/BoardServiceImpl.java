@@ -23,4 +23,10 @@ public class BoardServiceImpl implements BoardService {
 	public void write(BoardDTO boardDTO) throws Exception {
 		boardDAO.write(boardDTO);
 	}
+
+	@Override
+	public BoardDTO read(int board_num) throws Exception {
+		boardDAO.countup(board_num);
+		return boardDAO.read(board_num);
+	}
 }

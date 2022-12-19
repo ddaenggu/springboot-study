@@ -24,5 +24,13 @@ public class BoardDAO {
 	public void write(BoardDTO boardDTO) throws Exception {
 		session.insert(namespace + ".write", boardDTO);
 	}
+	
+	public void countup(int board_num) throws Exception {
+		session.update(namespace + ".countup", board_num);
+	}
+	
+	public BoardDTO read(int board_num) throws Exception {
+		return session.selectOne(namespace + ".read", board_num);
+	}
 
 }

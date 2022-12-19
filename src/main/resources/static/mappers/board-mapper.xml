@@ -25,4 +25,23 @@ VALUES
 NOW())
 </insert>
 
+<select id="read" resultType="com.sbs.SpringbootStudy.domain.BoardDTO">
+SELECT 
+BOARD_NUM, 
+NAME, 
+TITLE,
+CONTENT,  
+VIEW_COUNT, 
+REGDATE 
+FROM BOARD 
+WHERE BOARD_NUM = #{board_num}
+</select>
+
+<update id="countup">
+UPDATE BOARD SET 
+VIEW_COUNT = VIEW_COUNT+1 
+WHERE BOARD_NUM = #{board_num}
+</update>
+
+
 </mapper>

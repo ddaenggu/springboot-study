@@ -72,7 +72,7 @@ a:hover {
 				<tr>
 					<td width="70">${boardDTO.board_num }</td>
 					<td width="100">${boardDTO.name }</td>
-					<td width="300"><a href="#">${boardDTO.title }</a></td>
+					<td width="300"><a href="/read?board_num=${boardDTO.board_num}">${boardDTO.title }</a></td>
 					<td width="100">${boardDTO.regdate }</td>
 					<td width="70">${boardDTO.view_count }</td>
 				</tr>
