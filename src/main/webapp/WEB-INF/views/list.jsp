@@ -31,7 +31,30 @@ th, td {
 }
 
 b {
-font-size: 20pt;
+	font-size: 20pt;
+}
+
+a {
+	color: black;
+}
+
+a:hover {
+	color: #000087;
+}
+
+.btnzone {
+	margin-top: 10px;
+}
+
+.click_btn {
+	float: right;
+	border: 1px solid #CFCFCF;
+	width: 100px;
+	height: 30px;
+}
+
+.click_btn:hover {
+	opacity: 0.5;
 }
 </style>
 <body>
@@ -46,15 +69,20 @@ font-size: 20pt;
 				<td width="70">조회수</td>
 			</tr>
 			<c:forEach items="${list}" var="boardDTO">
-			<tr>
-				<td width="70">${boardDTO.board_num }</td>
-				<td width="100">${boardDTO.name }</td>
-				<td width="300"><a href="#">${boardDTO.title }</a></td>
-				<td width="100">${boardDTO.regdate }</td>
-				<td width="70">${boardDTO.view_count }</td>
-			</tr>
+				<tr>
+					<td width="70">${boardDTO.board_num }</td>
+					<td width="100">${boardDTO.name }</td>
+					<td width="300"><a href="#">${boardDTO.title }</a></td>
+					<td width="100">${boardDTO.regdate }</td>
+					<td width="70">${boardDTO.view_count }</td>
+				</tr>
 			</c:forEach>
 		</table>
+		<div class="btnzone">
+			<form action="regist" method="get">
+				<input type="submit" value="글쓰기" class="click_btn">
+			</form>
+		</div>
 	</div>
 </body>
 </html>

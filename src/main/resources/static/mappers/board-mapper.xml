@@ -13,4 +13,16 @@ FROM BOARD
 ORDER BY BOARD_NUM DESC
 </select>
 
+<insert id="write">
+INSERT INTO BOARD
+VALUES 
+(DEFAULT, 
+#{name}, 
+#{password},  
+#{title}, 
+#{content}, 
+0, 
+NOW())
+</insert>
+
 </mapper>

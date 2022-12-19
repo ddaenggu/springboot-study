@@ -7,5 +7,6 @@ import com.sbs.SpringbootStudy.domain.BoardDTO;
 public interface BoardService {
 	
 	public List<BoardDTO>list() throws Exception;
+	public void write(BoardDTO boardDTO) throws Exception;
 
 }

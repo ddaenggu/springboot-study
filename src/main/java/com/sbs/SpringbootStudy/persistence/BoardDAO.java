@@ -20,5 +20,9 @@ public class BoardDAO {
 	public List<BoardDTO> list() throws Exception {
 		return session.selectList(namespace + ".list");
 	}
+	
+	public void write(BoardDTO boardDTO) throws Exception {
+		session.insert(namespace + ".write", boardDTO);
+	}
 
 }
