@@ -40,5 +40,9 @@ public class BoardDAO {
 	public void delete(int board_num) throws Exception {
 		session.delete(namespace + ".delete", board_num);
 	}
+	
+	public void modify(BoardDTO boardDTO) throws Exception {
+		session.update(namespace + ".modify", boardDTO);
+	}
 
 }

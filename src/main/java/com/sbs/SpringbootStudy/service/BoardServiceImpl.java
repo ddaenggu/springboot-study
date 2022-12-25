@@ -29,6 +29,11 @@ public class BoardServiceImpl implements BoardService {
 		boardDAO.countup(board_num);
 		return boardDAO.read(board_num);
 	}
+	
+	@Override
+	public BoardDTO read2(int board_num) throws Exception {
+		return boardDAO.read(board_num);
+	}
 
 	@Override
 	public String checkpassword(int board_num) throws Exception {
@@ -38,5 +43,10 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void delete(int board_num) throws Exception {
 		boardDAO.delete(board_num);
+	}
+
+	@Override
+	public void modify(BoardDTO boardDTO) throws Exception {
+		boardDAO.modify(boardDTO);
 	}
 }

@@ -45,13 +45,13 @@ public class BoardController {
 		model.addAttribute(boardservice.read(board_num));
 	}
 	
-	// 비밀번호 체크 이동
+	// 비밀번호 체크 이동 (삭제)
 	@RequestMapping(value = "/checkpassword1", method = RequestMethod.GET)
 	public void checkpassword1(@RequestParam("board_num") int board_num, Model model) throws Exception {
-		model.addAttribute(boardservice.read(board_num));
+		model.addAttribute(boardservice.read2(board_num));
 	}
 	
-	// 비밀번호 확인
+	// 비밀번호 확인 (삭제)
 	@RequestMapping(value = "/delete")
 	public String delete(@RequestParam(value = "board_num") int board_num, @RequestParam(value = "checkpassword") String password, RedirectAttributes rttr) throws Exception {
 		String pw = boardservice.checkpassword(board_num);
@@ -62,6 +62,32 @@ public class BoardController {
 		else {
 			return "fail";
 		}
+	}
+	
+	// 비밀번호 체크 이동 (수정)
+	@RequestMapping(value = "/checkpassword2", method = RequestMethod.GET)
+	public void checkpassword2(@RequestParam("board_num") int board_num, Model model) throws Exception {
+		model.addAttribute(boardservice.read2(board_num));
+	}
+	
+	// 비밀번호 확인 (수정)
+	@RequestMapping(value = "/gomodify", method = RequestMethod.POST)
+	public String gomodify(@RequestParam(value = "board_num") int board_num, @RequestParam(value = "checkpassword") String password, RedirectAttributes rttr, Model model) throws Exception {
+		String pw = boardservice.checkpassword(board_num);
+		if (pw.equals(password)) {
+			model.addAttribute(boardservice.read2(board_num));
+			return "modify";
+		}
+		else {
+			return "fail";
+		}
+	}
+	
+	// 게시글 수정
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	public String modify(BoardDTO boardDTO, RedirectAttributes rttr) throws Exception {
+		boardservice.modify(boardDTO);
+		return "redirect:/list";
 	}
 
 }

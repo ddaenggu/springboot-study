@@ -56,4 +56,12 @@ DELETE FROM BOARD
 WHERE BOARD_NUM = #{board_num}
 </delete>
 
+<update id="modify">
+UPDATE BOARD SET
+TITLE = #{title}, 
+CONTENT = #{content}
+WHERE
+BOARD_NUM = #{board_num}
+</update>
+
 </mapper>
