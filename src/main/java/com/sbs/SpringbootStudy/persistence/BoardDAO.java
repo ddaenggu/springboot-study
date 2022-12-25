@@ -32,5 +32,13 @@ public class BoardDAO {
 	public BoardDTO read(int board_num) throws Exception {
 		return session.selectOne(namespace + ".read", board_num);
 	}
+	
+	public String checkpassword(int board_num) throws Exception {
+		return session.selectOne(namespace + ".checkpassword", board_num);
+	}
+	
+	public void delete(int board_num) throws Exception {
+		session.delete(namespace + ".delete", board_num);
+	}
 
 }

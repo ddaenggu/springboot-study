@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,16 +57,37 @@ input[type="text"] {
 	opacity: 0.5;
 }
 </style>
+
+<script type="text/javascript">
+function fn_regist() {
+	if ($('input[name=title]').val() == "") {
+		alert("제목을 입력하세요.");
+		return false;
+	}
+	if (board.content.value == "") {
+		alert("내용을 입력하세요.");
+		return false;
+	}
+	if ($('input[name=name]').val() == "") {
+		alert("작성자를 입력하세요.");
+		return false;
+	}
+	if ($('input[name=password]').val() == "") {
+		alert("비밀번호 4자리를 입력하세요.");
+		return false;
+	}
+	
+}
+</script>
 <body>
 	<div class="registzone">
 	<b>글 작성하기</b>
-		<form method="post">
+		<form method="post" name="board">
 			<input type="text" name="title" class="title" placeholder="제목을 입력하세요.">
-			<textarea name="content" class="content" placeholder="내용을 입력하세요.">
-			</textarea>
+			<textarea name="content" class="content" placeholder="내용을 입력하세요."></textarea>
 			<input type="text" name="name" class="name" placeholder="작성자">
-			<input type="text" name="password" class="name" placeholder="비밀번호 4자리">
-			<input type="submit" value="등록" class="regist_btn">
+			<input type="text" name="password" class="name" placeholder="비밀번호 4자리" maxlength="4">
+			<input type="submit" value="등록" class="regist_btn" onclick="return fn_regist()">
 		</form>
 	</div>
 </body>

@@ -61,9 +61,10 @@ input[type="text"] {
 	opacity: 0.5;
 }
 </style>
+
 <body>
 	<div class="registzone">
-		<form method="post">
+		<form name="board">
 			<input type="text" name="title" class="title" value="${boardDTO.title }" readonly="readonly">
 			<input type="text" name="name" class="name" value="작성자 : ${boardDTO.name }" readonly="readonly">
 			<input type="text" name="name" class="name" value="작성날짜 : ${boardDTO.regdate }" readonly="readonly">
@@ -74,8 +75,8 @@ input[type="text"] {
 			<input type="hidden" name="board_num" class="name" value="${boardDTO.board_num }">
 			<input type="hidden" name="password" class="name" value="${boardDTO.password }">
 			<button type="submit" formaction="list" formmethod="get" class="regist_btn">목록</button>
-			<button type="submit" formaction="delete" formmethod="get" class="regist_btn btn_right">삭제</button>
-			<button type="submit" formaction="modify" formmethod="get" class="regist_btn btn_right">수정</button>
+			<button type="submit" formaction="checkpassword1" formmethod="get" class="regist_btn btn_right">삭제</button>
+			<button type="submit" formaction="checkpassword2" formmethod="get" class="regist_btn btn_right">수정</button>
 		</form>
 	</div>
 </body>

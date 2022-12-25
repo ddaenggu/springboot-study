@@ -1,5 +1,7 @@
 package com.sbs.SpringbootStudy;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,6 +43,25 @@ public class BoardController {
 	@RequestMapping(value = "/read", method = RequestMethod.GET)
 	public void read(@RequestParam("board_num") int board_num, Model model) throws Exception {
 		model.addAttribute(boardservice.read(board_num));
+	}
+	
+	// 비밀번호 체크 이동
+	@RequestMapping(value = "/checkpassword1", method = RequestMethod.GET)
+	public void checkpassword1(@RequestParam("board_num") int board_num, Model model) throws Exception {
+		model.addAttribute(boardservice.read(board_num));
+	}
+	
+	// 비밀번호 확인
+	@RequestMapping(value = "/delete")
+	public String delete(@RequestParam(value = "board_num") int board_num, @RequestParam(value = "checkpassword") String password, RedirectAttributes rttr) throws Exception {
+		String pw = boardservice.checkpassword(board_num);
+		if (pw.equals(password)) {
+			boardservice.delete(board_num);
+			return "redirect:/list";
+		}
+		else {
+			return "fail";
+		}
 	}
 
 }

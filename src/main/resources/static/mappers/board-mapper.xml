@@ -29,6 +29,7 @@ NOW())
 SELECT 
 BOARD_NUM, 
 NAME, 
+PASSWORD, 
 TITLE,
 CONTENT,  
 VIEW_COUNT, 
@@ -43,5 +44,16 @@ VIEW_COUNT = VIEW_COUNT+1
 WHERE BOARD_NUM = #{board_num}
 </update>
 
+<select id="checkpassword" resultType="String">
+SELECT 
+PASSWORD 
+FROM BOARD 
+WHERE BOARD_NUM = #{board_num}
+</select>
+
+<delete id="delete">
+DELETE FROM BOARD 
+WHERE BOARD_NUM = #{board_num}
+</delete>
 
 </mapper>
